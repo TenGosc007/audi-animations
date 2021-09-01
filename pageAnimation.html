@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Montserrat";
+      }
+
+      .loading {
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+      }
+
+      .loading p {
+        margin-right: 5px;
+      }
+
+      .loading span {
+        margin-right: 2px;
+      }
+
+      .loading span:nth-child(1) {
+        animation: load 1s infinite backwards linear alternate;
+      }
+
+      .loading span:nth-child(2) {
+        animation: load 1s 0.15s infinite backwards linear alternate;
+      }
+
+      .loading span:nth-child(3) {
+        animation: load 1s 0.3s infinite backwards linear alternate;
+      }
+
+      .loading span:nth-child(4) {
+        animation: load 1s 0.45s infinite backwards linear alternate;
+      }
+
+      .loading span:nth-child(5) {
+        animation: load 1s 0.6s infinite backwards linear alternate;
+      }
+
+      .loading span:nth-child(6) {
+        animation: load 1s 0.75s infinite backwards linear alternate;
+      }
+
+      .loading span:nth-child(7) {
+        animation: load 1s 0.9s infinite backwards linear alternate;
+      }
+
+      @keyframes load {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
+      .container {
+        display: none;
+      }
+
+      .top {
+        height: 100vh;
+      }
+
+      .slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: linear-gradient(to left, #ba7453, #d1a984);
+        z-index: -1;
+      }
+
+      nav {
+        display: grid;
+        grid-template-columns: 10% 1fr 1fr 10%;
+        min-height: 10vh;
+        color: white;
+        align-items: center;
+      }
+
+      #logo {
+        grid-column: 2/3;
+        font-size: 24px;
+      }
+
+      .hamburger {
+        justify-self: end;
+      }
+
+      section {
+        display: flex;
+        height: 80vh;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .header {
+        display: flex;
+        flex-direction: column;
+        color: white;
+        font-size: 2rem;
+        font-weight: 500;
+        text-shadow: 2px 2px 4px #33333333;
+      }
+
+      .hero {
+        height: 60%;
+        width: 100%;
+        position: relative;
+      }
+
+      .hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: bottom;
+      }
+
+      .headline {
+        position: absolute;
+        top: 30%;
+        left: 8%;
+        font-size: calc(10px + 6vmin);
+        transform: translate(-20%, -70%);
+        color: white;
+        z-index: 3;
+      }
+
+      .hero::after {
+        content: "";
+        background: black;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        opacity: 0.3;
+        top: 0;
+      }
+
+      .go-more {
+        cursor: pointer;
+        color: white;
+        text-decoration: none;
+      }
+
+      .more {
+        margin-top: 2rem;
+        margin-bottom: 0.5rem;
+        animation: pulse 1s alternate infinite backwards 0.5s;
+      }
+
+      .icon {
+        position: relative;
+        text-align: center;
+        padding: 5px;
+        margin-bottom: 6px;
+        height: 10px;
+        width: 150px;
+        animation: pulse 1s alternate infinite backwards 0.5s;
+      }
+      .icon:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 51%;
+        background: white;
+        box-shadow: 2px 2px 4px #33333333;
+        transform: skew(0deg, 6deg);
+      }
+      .icon:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 50%;
+        background: white;
+        transform: skew(0deg, -6deg);
+      }
+
+      @keyframes pulse {
+        from {
+          transform: scale(0.9);
+        }
+
+        to {
+          transform: scale(1.1);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .hero {
+          min-width: 90%;
+        }
+
+        .hero img {
+          object-position: 60% bottom;
+        }
+      }
+
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 4px;
+      }
+
+      /* Create four equal columns that sits next to each other */
+      .column {
+        flex: 25%;
+        max-width: 25%;
+        padding: 0 4px;
+      }
+
+      .column img {
+        margin-top: 8px;
+        vertical-align: middle;
+        width: 100%;
+      }
+
+      .content {
+        max-width: 1500px;
+        margin: auto;
+        display: none;
+      }
+
+      /* Responsive layout - makes a two column-layout instead of four columns */
+      @media screen and (max-width: 800px) {
+        .column {
+          flex: 50%;
+          max-width: 50%;
+        }
+      }
+
+      /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+      @media screen and (max-width: 600px) {
+        .column {
+          flex: 100%;
+          max-width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loading">
+      <!-- <p>Loading</p> -->
+      <!-- <span>.</span>
+      <span>.</span>
+      <span>.</span> -->
+      <span>L</span><span>o</span><span>a</span><span>d</span><span>i</span
+      ><span>n</span><span>g</span>
+    </div>
+    <div class="container">
+      <div class="top">
+        <header>
+          <nav>
+            <h3 id="logo">Audi A5</h3>
+            <img class="hamburger" src="./hamburger.svg" alt="hamburger" />
+          </nav>
+          <section class="header">
+            <div class="hero">
+              <img src="./audi.jpg" alt="" />
+              <h1 class="headline">
+                The comfort <br />
+                you deserve
+              </h1>
+            </div>
+            <a href="#content" class="go-more">
+              <div class="more">See more</div>
+              <div class="icon"></div>
+            </a>
+          </section>
+        </header>
+
+        <div class="slider"></div>
+      </div>
+
+      <div id="content" class="content">
+        <div class="row">
+          <div class="column">
+            <img src="1.jpg" />
+            <img src="2.jpg" />
+            <img src="3.jpg" />
+            <img src="4.jpg" />
+            <img src="5.jpg" />
+            <img src="6.jpg" />
+            <img src="7.jpg" />
+          </div>
+          <div class="column">
+            <img src="8.jpg" />
+            <img src="9.jpg" />
+            <img src="10.jpg" />
+            <img src="11.jpg" />
+            <img src="12.jpg" />
+            <img src="13.jpg" />
+          </div>
+          <div class="column">
+            <img src="14.jpg" />
+            <img src="12.jpg" />
+            <img src="audi.jpg" />
+            <img src="1.jpg" />
+            <img src="2.jpg" />
+            <img src="3.jpg" />
+            <img src="4.jpg" />
+          </div>
+          <div class="column">
+            <img src="7.jpg" />
+            <img src="8.jpg" />
+            <img src="9.jpg" />
+            <img src="10.jpg" />
+            <img src="11.jpg" />
+            <img src="12.jpg" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"
+      integrity="sha512-DkPsH9LzNzZaZjCszwKrooKwgjArJDiEjA5tTgr3YX4E6TYv93ICS8T41yFHJnnSmGpnf0Mvb5NhScYbwvhn2w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js"
+      integrity="sha512-0xrMWUXzEAc+VY7k48pWd5YT6ig03p4KARKxs4Bqxb9atrcn2fV41fWs+YXTKb8lD2sbPAmZMjKENiyzM/Gagw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      const hero = document.querySelector(".hero");
+      const slider = document.querySelector(".slider");
+      const logo = document.querySelector("#logo");
+      const hamburger = document.querySelector(".hamburger");
+      const headline = document.querySelector(".headline");
+      const container = document.querySelector(".container");
+      const loading = document.querySelector(".loading");
+      const more = document.querySelector(".more");
+      const icon = document.querySelector(".icon");
+      const content = document.querySelector(".content");
+
+      setTimeout(() => {
+        loading.style.display = "none";
+        container.style.display = "block";
+        content.style.display = "block";
+      }, 2000);
+
+      setTimeout(() => {
+        const tl = new TimelineMax();
+
+        // prettier-ignore
+        tl.fromTo(hero, 1, { height: "0%" }, { height: "80%", ease: Power2.easeInOut })
+      .fromTo(hero,1.2,{width: "100%"}, {width: "80%", ease: Power2.easeInOut})
+      // prettier-ignore
+      .fromTo(slider, 1.2, {x: "-100%"}, {x: "0%", ease: Power2.easeInOut}, "-=1.2")
+      .fromTo(icon, 0.5, {opacity: 0, x:30}, {opacity: 1, x: 0}, "-=0.5")
+      .fromTo(hamburger, 0.5, {opacity: 0, x:30}, {opacity: 1, x: 0}, "-=0.5")
+      .fromTo(headline, 0.5, {opacity: 0, x:30}, {opacity: 1, x: 0}, "-=0.5")
+      .fromTo(more, 0.5, {opacity: 0, y:-30}, {opacity: 1, y: -10}, "-=0.5")
+      .fromTo(icon, 0.5, {opacity: 0, y:30}, {opacity: 1, y: 0}, "-=0.5")
+      }, 2000);
+    </script>
+  </body>
+</html>
